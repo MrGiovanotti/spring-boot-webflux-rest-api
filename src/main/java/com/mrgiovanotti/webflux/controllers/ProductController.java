@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mrgiovanotti.webflux.documents.Product;
 import com.mrgiovanotti.webflux.dto.ProductDto;
 import com.mrgiovanotti.webflux.services.ProductService;
 
@@ -27,7 +26,7 @@ public class ProductController {
     private final ProductService productService;
     
     @GetMapping("/")
-    public Mono<ResponseEntity<Flux<Product>>> list() {
+    public Mono<ResponseEntity<Flux<ProductDto>>> list() {
         return Mono.just(
                 ResponseEntity.ok()
                         .contentType(MediaType.APPLICATION_JSON)
@@ -35,7 +34,7 @@ public class ProductController {
     }
     
     @GetMapping("/view/{id}")
-    public Mono<ResponseEntity<Product>> view(@PathVariable String id) {
+    public Mono<ResponseEntity<ProductDto>> view(@PathVariable String id) {
         
         return productService.findById(id)
                 .map(ResponseEntity::ok)
@@ -44,7 +43,7 @@ public class ProductController {
     }
     
     @PostMapping("/create")
-    public Mono<ResponseEntity<Product>> save(@RequestBody ProductDto productDto) {
+    public Mono<ResponseEntity<ProductDto>> save(@RequestBody ProductDto productDto) {
         return productService.save(productDto)
                 .map(p -> ResponseEntity.created(URI.create("/api/v1/product/view/" + p.getId()))
                         .contentType(MediaType.APPLICATION_JSON)

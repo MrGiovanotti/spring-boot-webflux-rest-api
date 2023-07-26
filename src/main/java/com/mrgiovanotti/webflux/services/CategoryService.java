@@ -8,10 +8,12 @@ import reactor.core.publisher.Mono;
 
 public interface CategoryService {
     
+    Flux<CategoryDto> findAll();
+    
     Mono<Category> findById(String id);
     
     Mono<Category> save(CategoryDto categoryDto);
     
-    Flux<Category> findAll();
+    Mono<Category> save(Category category);
     
 }

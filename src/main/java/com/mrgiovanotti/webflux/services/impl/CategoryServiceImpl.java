@@ -18,11 +18,11 @@ public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
     
     @Override
-    public Mono<Category> save(CategoryDto categoryDto) {
+    public Flux<CategoryDto> findAll() {
         
-        Category category = new Category(categoryDto.getName());
+        return categoryRepository.findAll()
+                .map(category -> new CategoryDto(category.getId(), category.getName()));
         
-        return categoryRepository.save(category);
     }
     
     @Override
@@ -31,8 +31,15 @@ public class CategoryServiceImpl implements CategoryService {
     }
     
     @Override
-    public Flux<Category> findAll() {
-        return categoryRepository.findAll();
+    public Mono<Category> save(CategoryDto categoryDto) {
+        
+        Category category = new Category(categoryDto.getName());
+        return categoryRepository.save(category);
+    }
+    
+    @Override
+    public Mono<Category> save(Category category) {
+        return categoryRepository.save(category);
     }
     
 }

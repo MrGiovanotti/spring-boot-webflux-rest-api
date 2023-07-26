@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
     private final CategoryRepository categoryRepository;
     
     @Override
-    public Mono<Product> save(ProductDto productDto) {
+    public Mono<ProductDto> save(ProductDto productDto) {
         
         // Going to DB to retrieve the category
         Mono<Category> categoryMono = categoryRepository.findById(productDto.getCategoryDto().getId());
@@ -29,19 +29,25 @@ public class ProductServiceImpl implements ProductService {
         // Saving Product
         return categoryMono.flatMap(category -> {
             Product product = new Product(productDto.getName(), productDto.getPrice(), category);
-            return productRepository.save(product);
+            return productRepository.save(product)
+                    .map(ProductDto::new);
         });
         
     }
     
     @Override
-    public Flux<Product> findAll() {
-        return productRepository.findAll();
+    public Flux<ProductDto> findAll() {
+        return productRepository.findAll().map(ProductDto::new);
     }
     
     @Override
-    public Mono<Product> findById(String id) {
-        return productRepository.findById(id);
+    public Mono<ProductDto> findById(String id) {
+        return productRepository.findById(id).map(ProductDto::new);
+    }
+    
+    @Override
+    public Mono<Product> save(Product product) {
+        return productRepository.save(product);
     }
     
 }

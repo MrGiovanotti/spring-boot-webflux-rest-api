@@ -8,10 +8,13 @@ import reactor.core.publisher.Mono;
 
 public interface ProductService {
     
-    Mono<Product> save(ProductDto productDto);
+    Flux<ProductDto> findAll();
     
-    Mono<Product> findById(String id);
+    Mono<ProductDto> findById(String id);
     
-    Flux<Product> findAll();
+    Mono<ProductDto> save(ProductDto productDto);
+    
+    // Just for using in run method
+    Mono<Product> save(Product product);
     
 }

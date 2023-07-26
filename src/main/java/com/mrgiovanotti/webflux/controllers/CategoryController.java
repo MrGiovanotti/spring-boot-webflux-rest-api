@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mrgiovanotti.webflux.documents.Category;
+import com.mrgiovanotti.webflux.dto.CategoryDto;
 import com.mrgiovanotti.webflux.services.CategoryService;
 
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class CategoryController {
     private final CategoryService categoryService;
     
     @GetMapping("/")
-    public Mono<ResponseEntity<Flux<Category>>> findAll() {
+    public Mono<ResponseEntity<Flux<CategoryDto>>> findAll() {
         
         return Mono.just(ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
