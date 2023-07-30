@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
             Product product = new Product(productDto.getName(), productDto.getPrice(), category);
             return productRepository.save(product)
                     .map(ProductDto::new);
-        });
+        }).switchIfEmpty(Mono.empty());
         
     }
     

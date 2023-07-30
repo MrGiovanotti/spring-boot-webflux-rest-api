@@ -33,7 +33,7 @@ public class ProductController {
                         .body(productService.findAll()));
     }
     
-    @GetMapping("/view/{id}")
+    @GetMapping("/{id}")
     public Mono<ResponseEntity<ProductDto>> view(@PathVariable String id) {
         
         return productService.findById(id)
@@ -42,12 +42,13 @@ public class ProductController {
         
     }
     
-    @PostMapping("/create")
+    @PostMapping("/")
     public Mono<ResponseEntity<ProductDto>> save(@RequestBody ProductDto productDto) {
         return productService.save(productDto)
                 .map(p -> ResponseEntity.created(URI.create("/api/v1/product/view/" + p.getId()))
                         .contentType(MediaType.APPLICATION_JSON)
-                        .body(p));
+                        .body(p))
+                .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
     
 }
