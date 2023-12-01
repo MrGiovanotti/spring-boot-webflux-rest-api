@@ -53,15 +53,15 @@ public class SpringBootWebfluxRestApiApplication implements CommandLineRunner {
                 furnitureCategory);
         
         Flux<Product> productsFlux = Flux.just(
-                new Product("TV Panasonic Pantalla LCD", 466.89, electronicCategory),
-                new Product("Sony Cámara HD Digital", 177.89, electronicCategory),
-                new Product("Apple Ipod", 46.89, electronicCategory),
-                new Product("Sonny Notebook", 846.89, computationCategory),
-                new Product("Hewlett Packard Multifuncional", 200.89, computationCategory),
-                new Product("Bianchi Bicicleta", 70.89, sportCategory),
-                new Product("HP Notebook Omen 17", 2500.89, computationCategory),
-                new Product("Mica Cómoda 5 Cajones", 150.89, furnitureCategory),
-                new Product("TV Sonny Bravia OLED 4K Ultra HD", 2255.89, electronicCategory));
+                new Product("TV Panasonic Pantalla LCD", 466.89, null, electronicCategory),
+                new Product("Sony Cámara HD Digital", 177.89, null, electronicCategory),
+                new Product("Apple Ipod", 46.89, null, electronicCategory),
+                new Product("Sonny Notebook", 846.89, null, computationCategory),
+                new Product("Hewlett Packard Multifuncional", 200.89, null, computationCategory),
+                new Product("Bianchi Bicicleta", 70.89, null, sportCategory),
+                new Product("HP Notebook Omen 17", 2500.89, null, computationCategory),
+                new Product("Mica Cómoda 5 Cajones", 150.89, null, furnitureCategory),
+                new Product("TV Sonny Bravia OLED 4K Ultra HD", 2255.89, null, electronicCategory));
         
         categoriesFlux.flatMap(categoryService::save)
                 .doOnNext(cat -> LOGGER.info("Guardando categoría: {}", cat.getId()))

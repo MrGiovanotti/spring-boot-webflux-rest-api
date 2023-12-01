@@ -2,12 +2,12 @@ package com.mrgiovanotti.webflux.dto;
 
 import java.io.Serializable;
 
-import com.mrgiovanotti.webflux.documents.Category;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class CategoryDto implements Serializable {
     
@@ -19,10 +19,6 @@ public class CategoryDto implements Serializable {
     public CategoryDto(String id, String name) {
         this.id = id;
         this.name = name;
-    }
-    
-    public CategoryDto(Category category) {
-        this(category.getId(), category.getName());
     }
     
 }

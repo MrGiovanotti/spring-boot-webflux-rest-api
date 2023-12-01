@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.mrgiovanotti.webflux.documents.Category;
 import com.mrgiovanotti.webflux.dto.CategoryDto;
+import com.mrgiovanotti.webflux.mappers.CategoryMapper;
 import com.mrgiovanotti.webflux.repositories.CategoryRepository;
 import com.mrgiovanotti.webflux.services.CategoryService;
 
@@ -21,7 +22,7 @@ public class CategoryServiceImpl implements CategoryService {
     public Flux<CategoryDto> findAll() {
         
         return categoryRepository.findAll()
-                .map(category -> new CategoryDto(category.getId(), category.getName()));
+                .map(CategoryMapper::map);
         
     }
     

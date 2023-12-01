@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "34a68f78-4e12-4587-942f-73903f1f4792",
+		"name": "spring-boot-webflux-rest-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6608541"
+	},
+	"item": [
+		{
+			"name": "product-list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-view",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/product/64dc2cdea76ded62b48ebaaf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"64dc2cdea76ded62b48ebaaf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"TV SONY Pantalla LCD\",\n    \"price\": 532.36,\n    \"categoryDto\": {\n        \"id\": \"6567f30ba83f912b104ccabc\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category-list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/category/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"category",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": \"65557efb279d4f68f3f0e0fb\",\n        \"name\": \"Sonny Notebook\",\n        \"price\": 900.89,\n        \"categoryDto\": {\n            \"id\": \"65557efb279d4f68f3f0e0f6\",\n            \"name\": \"pelicula\"\n        }\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/product/651f70edfff9e35f88ac625b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"651f70edfff9e35f88ac625b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-photo-upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/mrgiovanotti/Pictures/fotoPerfil.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/product/upload/6524baf937b5a3387592157c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"upload",
+						"6524baf937b5a3387592157c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-create-ad-upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/mrgiovanotti/Pictures/sliders/slide1.jpg"
+						},
+						{
+							"key": "name",
+							"value": "TV SONY Pantalla LCD",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "532.36",
+							"type": "text"
+						},
+						{
+							"key": "categoryDto.id",
+							"value": "65557e4f55c87c151b4027b6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/product/create-and-upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"create-and-upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

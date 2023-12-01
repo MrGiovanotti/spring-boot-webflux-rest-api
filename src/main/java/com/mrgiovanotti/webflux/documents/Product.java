@@ -21,17 +21,19 @@ public class Product {
     private String name;
     private Double price;
     private Date createdAt;
+    private String photo;
     
     private Category category;
     
-    public Product(String name, Double price) {
+    public Product(String name, Double price, String photo) {
         this.name = name;
         this.price = price;
+        this.photo = photo;
         createdAt = new Date();
     }
     
-    public Product(String name, Double price, Category category) {
-        this(name, price);
+    public Product(String name, Double price, String photo, Category category) {
+        this(name, price, photo);
         this.category = category;
     }
     
