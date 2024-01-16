@@ -74,4 +74,9 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.delete(product);
     }
     
+    @Override
+    public Mono<ProductDto> findByName(String name) {
+        return productRepository.findByName(name).map(ProductMapper::map);
+    }
+    
 }

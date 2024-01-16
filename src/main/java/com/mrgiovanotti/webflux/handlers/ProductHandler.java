@@ -52,7 +52,7 @@ public class ProductHandler {
     public Mono<ServerResponse> view(ServerRequest request) {
         String id = request.pathVariable("id");
         return productService.findById(id)
-                .flatMap(productDto -> ServerResponse.ok().contentType(MediaType.APPLICATION_PROBLEM_JSON)
+                .flatMap(productDto -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromObject(productDto)))
                 .switchIfEmpty(ServerResponse.notFound().build());
     }

@@ -43,4 +43,9 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.save(category);
     }
     
+    @Override
+    public Mono<CategoryDto> findByName(String name) {
+        return categoryRepository.findByName(name).map(CategoryMapper::map);
+    }
+    
 }

@@ -16,4 +16,6 @@ public interface CategoryService {
     
     Mono<Category> save(Category category);
     
+    Mono<CategoryDto> findByName(String name);
+    
 }
